@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    // write your code here
+    int n= scn.nextInt();
+    int a[] = new int[n];
+    for(int i=0 ; i< n ; i++){
+        a[i] = scn.nextInt();
+    }
+    
+    // first for loop is to select the start point
+     // second for loop is to select the end points for the starting point
+    // third  for loop is to print all the subarrays from start to end
+    
+    for(int st=0 ; st< n ; st++){
+        for(int ep = st ; ep < n ; ep++){
+            for(int k= st ; k <= ep ; k++){
+                System.out.print(a[k] + "\t");
+            }
+            System.out.println();
+        }
+    }
+   
+ }
+
+}
