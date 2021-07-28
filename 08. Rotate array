@@ -1,0 +1,51 @@
+import java.util.Scanner;
+ 
+ public class Main {
+ 
+ 	 public static void rotate(int[] a, int k) {
+ 	 	 // Write your code here
+ 	 	 
+ 	 	 k= k % a.length; // if k is greater than length of array
+ 	 	 
+ 	 	 // 1. reverse complete array 
+ 	 	 int lo = 0;
+ 	 	 int hi = a.length-1;
+ 	 	
+ 	 	 while(lo < hi){
+ 	 	     int temp = a[lo];
+ 	 	     a[lo] = a[hi];
+ 	 	     a[hi] = temp;
+ 	 	     lo++;
+ 	 	     hi--;
+ 	 	 }
+ 	 	 // NOW REVERSE 0 TO K-1 PART....make custom reverse functions
+ 	 	  reverse(a, 0 , k-1);
+ 	 	  
+ 	 	   // NOW REVERSE K TO LAST INDEX PART
+ 	 	  reverse(a , k , a.length-1);
+ 	}
+ 	public static void reverse(int a[] , int lo , int hi){
+ 	    while(lo< hi ){
+ 	        int temp = a[lo];
+ 	        a[lo] = a[hi];
+ 	        a[hi] = temp;
+ 	        lo++;
+ 	        hi--;
+ 	    }
+ 	}
+ 
+ 	 // Don't make any changes here
+ 	 public static void main(String[] args) {
+ 	 	 Scanner s = new Scanner(System.in);
+ 	 	 int n = s.nextInt();
+ 	 	 int k=s.nextInt();
+ 	 	 int[] ar = new int[n];
+ 	 	 for (int i = 0; i < n; i++) {
+ 	 	 	 ar[i] = s.nextInt();
+ 	 	 }
+ 	 	 rotate(ar, k);
+ 	 	 for (int v : ar)
+ 	 	 	 System.out.print(v + " ");
+ 	 }
+ 
+ }
