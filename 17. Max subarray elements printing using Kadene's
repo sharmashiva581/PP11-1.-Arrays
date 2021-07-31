@@ -11,10 +11,11 @@ import java.util.*;
  	 	 int max_sum= arr[0]; // maximum sum
  	 	 int cur_sum = arr[0]; // current sum
      
-     int cst = 0;
-     int cep = 0;
-     int mst =0;
-     int mep = 0;
+     int cst = 0;  // current subarray starting point
+     int cep = 0;  // current subarray ending point
+     
+     int mst =0; // max subarray starting point
+     int mep = 0; // max subarray ending point
      
  	 	 
  	 	 for(int i=1 ; i< arr.length ; i++){
