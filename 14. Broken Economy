@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    
+    // write your code here   *****BEST CODE FOR THIS QUESTION *********
+    
+    Scanner scn = new Scanner(System.in);
+    int n= scn.nextInt();
+    int a[] = new int[n];
+    for(int i=0 ; i< n; i++){
+        a[i] = scn.nextInt();
+    }
+    int d= scn.nextInt();
+    
+    int lo = 0 ;
+    int hi = n-1;
+    
+    while(lo <= hi){
+        int mid = (lo + hi) / 2;
+        if(a[mid] == d){
+            System.out.println(a[mid]);
+            return;
+        }
+        else if( d > a[mid]){
+            lo = mid+1;
+        }
+        else{
+            hi= mid-1;
+        }
+    }
+    System.out.println(a[hi+1]);
+    System.out.println(a[lo-1]);
+ }
+
+}
