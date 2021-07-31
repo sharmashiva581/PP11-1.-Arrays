@@ -1,0 +1,57 @@
+import java.util.*;
+ 
+ public class Main {
+ 
+ 	 // This is a functional problem. You have to complete this function.
+ 	 // It takes as input an integer array. It should return the required sum.
+ 	 public static int maxSum(int[] arr) {
+ 	 	 // write your code here.
+ 	 	 // NOW DOING USING KADENE'S ALGO TO REDUCE COMPLEXITY
+ 	 	 
+ 	 	 int max_sum= arr[0]; // maximum sum
+ 	 	 int cur_sum = arr[0]; // current sum
+     
+     int cst = 0;
+     int cep = 0;
+     int mst =0;
+     int mep = 0;
+     
+ 	 	 
+ 	 	 for(int i=1 ; i< arr.length ; i++){
+ 	 	    if(cur_sum < 0){
+ 	 	        // new start
+ 	 	        cur_sum = arr[i];
+            cst = i;
+            cep = i;
+ 	 	    }
+ 	 	    else {
+ 	 	        // means cur_sum > 0 ---> add in current sum
+ 	 	        cur_sum += arr[i];
+            cep = i;
+ 	 	    }
+ 	 	    if(cur_sum > max_sum){
+ 	 	        max_sum = cur_sum;
+            mst = cst;
+            mep = cep;
+ 	 	    }
+ 	 	 }
+     for(k= mst ; k<= mep ; k++){
+          System.out.print(arr[k] + " ");
+      }
+      System.out.println();
+ 	 	 
+     }
+ 
+ 	 public static void main(String[] args) {
+ 	 	 Scanner sc = new Scanner(System.in);
+ 	 	 int N = sc.nextInt();
+ 	 	 int[] arr = new int[N];
+ 	 	 for (int i = 0; i < arr.length; i++) {
+ 	 	 	 arr[i] = sc.nextInt();
+ 	 	 }
+ 
+ 	 	 System.out.println(maxSum(arr));
+ 	 	 
+ 	 }
+ 
+ }
