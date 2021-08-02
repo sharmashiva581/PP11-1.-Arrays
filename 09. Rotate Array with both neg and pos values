@@ -14,7 +14,7 @@ public class Main{
   public static void rotate(int[] a, int k){
  	 	 // Write your code here
  	 	 
- 	 	 k= k % a.length; // if k is greater than length of array....make k effective
+ 	 	 k= k % a.length; // if k is greater than or equal to  length of array....make k effective
  	 	 
  	 	 // Now this IF will handle the negative cases
  	 	 if(k < 0 ){
