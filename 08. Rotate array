@@ -5,7 +5,7 @@ import java.util.Scanner;
  	 public static void rotate(int[] a, int k) {
  	 	 // Write your code here
  	 	 
- 	 	 k= k % a.length; // if k is greater than length of array
+ 	 	 k= k % a.length; // if k is greater than or equal to length of array
  	 	 
  	 	 // 1. reverse complete array 
  	 	 int lo = 0;
