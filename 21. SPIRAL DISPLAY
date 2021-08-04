@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception { // FINAL CODE
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        int r = scn.nextInt();
+        int c= scn.nextInt();
+        int mat[][] = new int[r][c];
+        for(int i=0 ; i< r; i++){
+            for(int j=0 ; j< c ; j++){
+                mat[i][j] = scn.nextInt();
+            }
+        }
+        
+        int rs = 0 ;  // row start
+        int re = r-1;  // row end
+        int cs = 0 ;  // column start
+        int ce = c-1;  // column end
+        int te = r*c;  // te = total no of elements in the matrix
+        int epsf = 0;  // elemnts printed so far
+        
+        while(epsf <te){
+            // printing left wall of our shell ---> row changing
+            
+                for(int row = rs ; row <=re && epsf < te ; row++ ){
+                    System.out.println(mat[row][cs]);
+                    epsf+=1;
+                }
+        
+            cs+=1;
+            
+            // printing bottom wall -----> columns changing
+            
+                for(int col = cs ; col <= ce && epsf < te ; col++){
+                    System.out.println(mat[re][col]);
+                    epsf+=1;
+                }
+            
+            re--;
+            
+            // now printing right wall -----> row changing  again
+            
+                for(int row = re ; row >= rs && epsf < te ; row--){
+                    System.out.println(mat[row][ce]);
+                    epsf++;
+                }
+            
+            ce--; 
+            
+            //  now printing top wall -----> column changing  again
+            
+                for(int col= ce ; col >=cs && epsf < te ; col--){
+                    System.out.println(mat[rs][col]);
+                    epsf++;
+                }
+            
+            rs++;
+            
+        }
+    }
+
+}
