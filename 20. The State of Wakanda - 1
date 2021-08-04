@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int r = scn.nextInt();
+    int c = scn.nextInt();
+    int mat[][] = new int[r][c];
+    for(int i=0 ; i< r ; i++){
+        for(int j=0 ; j< c; j++){
+            mat[i][j] = scn.nextInt();
+        }
+    }
+    
+    for(int col=0 ; col< c ; col++){
+        // for even column ----> travel top to down
+        if(col % 2 ==0){
+            for(int row=0 ; row< r ; row++){
+                System.out.println(mat[row][col]);
+            }
+        }
+        
+        // for odd column ------> travel bottom to top
+        else{
+            for(int row = r-1 ; row >=0 ; row--){
+                System.out.println(mat[row][col]);
+            }
+        }
+    }
+ }
+
+}
