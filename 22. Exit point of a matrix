@@ -17,7 +17,7 @@ public class Main {
     int row = 0;
     int col = 0;
 
-    // 1 = east , 2 = south , 3 = west , 4 = north
+    // 1 = east , 2 = south , 3 = west , 0 = north
     int dir = 1;
 
     while (row >= 0 && row <  r && col >= 0 && col < c) {
