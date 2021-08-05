@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner scn = new Scanner(System.in);
+    int r = scn.nextInt();
+    int c = scn.nextInt();
+    int mat[][] = new int[r][c];
+    for (int i = 0 ; i < r; i++){
+      for (int j = 0 ; j < c ; j++) {
+        mat[i][j] = scn.nextInt();
+      }
+    }
+    int row = 0;
+    int col = 0;
+
+    // 1 = east , 2 = south , 3 = west , 4 = north
+    int dir = 1;
+
+    while (row >= 0 && row <  r && col >= 0 && col < c) {
+      dir = (mat[row][col] + dir) % 4;
+
+      if (dir == 1) {
+        col++;
+        
+        if(col == c){ // means right wall crossed
+            col--;
+            break;
+        }
+      }
+      
+      else if (dir == 2) {
+        row++;
+        
+        if(row == r){ // means bottom wall crossed
+            row--;
+            break;
+        }
+      }
+      else if (dir == 3) {
+        col--;
+        
+        if(col < 0){ // means left wall crossed
+            col++;
+            break;
+        }
+      }
+      else { 
+        row--;
+        
+        if(row < 0){// means top wall crossed
+            row++;
+            break;
+        }
+      }
+    }
+    
+    System.out.println(row);
+    System.out.println(col);
+
+
+  }
+
+}
