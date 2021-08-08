@@ -22,10 +22,10 @@ import java.io.*;
  	 	     lo++;
  	 	     hi--;
  	 	 }
- 	 	 // NOW REVERSE 0 TO K-1 PART....make custom reverse functions
+ 	 	 // NOW REVERSE 0 TO K PART....make custom reverse functions
  	 	  reverse(a, 0 , k);
  	 	  
- 	 	   // NOW REVERSE K TO LAST INDEX PART
+ 	 	   // NOW REVERSE K+1 TO LAST INDEX PART
  	 	  reverse(a , k+1 , a.length-1);
  	}
  	public static void reverse(int a[] , int lo , int hi){
