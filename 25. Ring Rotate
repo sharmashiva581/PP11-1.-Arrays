@@ -1,0 +1,152 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        int n= scn.nextInt();
+        int m= scn.nextInt();
+        int mat[][] = new int[n][m];
+        for(int i=0 ; i< n ; i++){
+            for(int j=0 ; j< m ; j++){
+                mat[i][j] = scn.nextInt();
+            }
+        }
+        int s= scn.nextInt(); // shel
+        int r= scn.nextInt(); // r = no of rotations
+        
+        shell_rotate(mat , s , r);
+        display(mat);
+        
+    }
+    public static void shell_rotate(int mat[][] , int s , int r){
+        // 1. fill a 1D aray using Sth shell of matrix
+        int arr[] = fill_1D_array(mat , s);
+        
+        // 2 . rotate this array
+        rotate_array(arr , r);
+        
+        // 3. now fill the the Sth shell with this rotated array
+        fill_shell(mat , s , arr);
+        
+        
+    }
+    public static int[] fill_1D_array(int mat[][] , int s){
+        int rows = mat.length; // total rows
+        int col = mat[0].length; // total columns
+        
+        int rs = s-1;
+        int cs = s-1;
+        int re = rows-s;
+        int ce = col-s;
+        
+        int te= 2*(re-rs) + 2*(ce-cs); // total elements in the Sth shell
+        int arr[] = new int[te]; 
+        int idx = 0;
+        
+        for(int i=rs ; i<=re ; i++){ // left wall
+            arr[idx] = mat[i][cs];
+            idx++;
+        }
+        cs++;
+        
+        for(int j = cs ; j<=ce ; j++){ // bottom wall
+            arr[idx] = mat[re][j];
+            idx++;
+        }
+        re--;
+        
+        for(int i = re ; i>=rs ; i--){ // right wall
+            arr[idx] = mat[i][ce];
+            idx++;
+        }
+        ce--;
+        
+        for(int j= ce ;  j>= cs ; j--){ // top wall
+            arr[idx] = mat[rs][j];
+            idx++;
+        }
+        rs++;
+        
+        return arr;
+        
+    }
+    public static void rotate_array(int arr[] , int k){
+        int lo = 0;
+        int hi= arr.length-1;
+        
+        k=  k % arr.length;
+        if(k < 0){
+            k= arr.length + k;
+        }
+        
+        while(lo < hi){
+            int temp = arr[lo];
+            arr[lo] = arr[hi];
+            arr[hi] = temp;
+            
+            lo++;
+            hi--;
+        }
+        reverse(arr , 0 , k-1);
+        reverse(arr , k , arr.length-1);
+    }
+    public static void reverse(int arr[] , int lo , int hi){
+        while(lo < hi){
+            int temp = arr[lo];
+            arr[lo] = arr[hi];
+            arr[hi] = temp;
+            lo++;
+            hi--;
+        }
+    }
+    public static void fill_shell(int mat[][] , int s , int arr[]){
+          int rows = mat.length; // total rows
+        int col = mat[0].length; // total columns
+        
+        int rs = s-1;
+        int cs = s-1;
+        int re = rows-s;
+        int ce = col-s;
+        
+        int te= 2*(re-rs) + 2*(ce-cs); // total elements in the Sth shell
+        
+        int idx = 0;
+        
+        for(int i=rs ; i<=re ; i++){ // left wall
+             mat[i][cs] =  arr[idx] ;
+            idx++;
+        }
+        cs++;
+        
+        for(int j = cs ; j<=ce ; j++){ // bottom wall
+             mat[re][j] =  arr[idx];
+            idx++;
+        }
+        re--;
+        
+        for(int i = re ; i>=rs ; i--){ // right wall
+             mat[i][ce] =  arr[idx];
+            idx++;
+        }
+        ce--;
+        
+        for(int j= ce ;  j>= cs ; j--){ // top wall
+             mat[rs][j]  =  arr[idx];
+            idx++;
+        }
+        rs++;
+    } 
+
+    public static void display(int[][] arr){
+        for(int i = 0; i < arr.length; i++){
+            for(int j = 0; j < arr[0].length; j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+}
