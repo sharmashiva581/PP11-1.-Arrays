@@ -1,10 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Main {                 // OPTIMIZED CODE
 
     public static void main(String[] args) throws Exception {
         // write your code here
+        
           Scanner scn = new Scanner(System.in);
         int n= scn.nextInt();
         int mat[][] = new int[n][n];
@@ -14,15 +15,22 @@ public class Main {
             }
         }
         int x = scn.nextInt();
-        for(int r= 0 ; r< n  ; r++){
-            for(int c = 0 ; c< n ; c++){
+        int r = 0 ; 
+        int c= n-1;
+        while(r < n && c >=0){
                 if(mat[r][c] == x){
                     System.out.println(r);
                     System.out.println(c);
                     return;
                 }
-            }
+                 if( mat[r][c] < x){
+                    r++;
+                }
+                if(mat[r][c] > x){
+                    c--;
+                }
         }
+        
         System.out.println("Not Found");
     }
 
