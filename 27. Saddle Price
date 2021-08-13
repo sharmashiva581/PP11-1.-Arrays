@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+           Scanner scn = new Scanner(System.in);
+        int n= scn.nextInt();
+        int mat[][] = new int[n][n];
+        for(int i=0 ; i< n ; i++){
+            for(int j=0 ; j< n ; j++){
+                mat[i][j] = scn.nextInt();
+            }
+        }
+        saddle_point(mat);
+    }
+    public static void saddle_point(int mat[][]){
+        int n= mat.length;
+        for(int r=0 ; r< n ; r++){
+            int minc = 0; // column of minimum value
+            int min = mat[r][0];
+            for(int j=0 ; j< n ; j++){
+                if(mat[r][j] < min){
+                    min = mat[r][j];
+                    minc = j;
+                }
+            }
+            boolean if_exist = true;
+            for(int i=0;  i< n ; i++){
+                if(min < mat[i][minc] ){
+                    // means this min value is not a saddle point
+                    if_exist = false;
+                    break;
+                    
+                }
+                
+            }
+            if(if_exist == true){
+                     System.out.println(min);
+                     return;
+                }
+            
+           
+        }
+        System.out.println("Invalid input");
+       
+        
+    }
+
+}
