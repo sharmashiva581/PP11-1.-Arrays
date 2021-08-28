@@ -41,3 +41,42 @@ public static void main(String[] args) throws Exception {
  }
 
 }
+
+**********************************************************************************************************************************************************************************
+
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    
+    //  **********************   USING RECURSION  ***********************
+    
+    Scanner scn = new Scanner(System.in);
+    int n= scn.nextInt();
+    int arr[] = new int[n];
+    for(int i=0 ; i< n ; i++){
+        arr[i] = scn.nextInt();
+    }
+    
+    printSubsets(arr , 0 , "");
+    
+    
+ }
+    public static void printSubsets(int arr[] , int idx , String set){
+        if(idx == arr.length){
+            System.out.println(set);
+            return;
+        }
+        
+          // when idx value don't want to come
+         printSubsets(arr , idx+1 , set + "-\t");
+        
+        // when idx value want to come
+        printSubsets(arr , idx+1, set+ arr[idx] + "\t");
+        
+       
+    } 
+
+}
